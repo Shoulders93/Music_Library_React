@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {Component} from "react";
+import DisplaySong from "./DisplaySong";
 
 class App extends Component{
   state = {
@@ -21,6 +22,7 @@ class App extends Component{
       return(
           <div>
               <h1>This is a test!</h1>
+              <DisplaySong />
           </div>
       )
   }
