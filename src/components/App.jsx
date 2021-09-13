@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {Component} from "react";
 import CreateSong from "./CreateSong";
 import DisplaySong from "./DisplaySong";
+import SearchBar from "./SearchBar";
 
 class App extends Component{
     constructor(props){
@@ -49,7 +50,17 @@ class App extends Component{
         this.getAllSongs();
     }
 
-// sum < number ? console.log("Yes it is") : console.log('naw')
+    filterSong = async (song) => {
+        try{
+            let response = await axios.get('http://127.0.0.1:8000/music/' + song)
+            console.log("filter is working")
+        }
+        catch(err){
+            console.log("error in filter")
+        }
+        this.getAllSongs();
+    }
+
 
   render(){
       return(
@@ -60,6 +71,7 @@ class App extends Component{
               :
               null}
               <CreateSong createNewSong = {this.AddNewSong}></CreateSong>
+              <SearchBar filterSongs = {this.filterSong}></SearchBar>
           </div>
       )
   }
