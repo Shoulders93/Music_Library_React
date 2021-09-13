@@ -3,9 +3,12 @@ import React, {Component} from "react";
 import DisplaySong from "./DisplaySong";
 
 class App extends Component{
-  state = {
-    songs: []
-  }
+    constructor(props){
+        super(props);
+        this.state = {
+        
+        }
+    }
 
   componentDidMount(){
     this.getAllSongs();
@@ -16,13 +19,14 @@ class App extends Component{
     this.setState({
         songs: response.data
     });
-    console.log(response);
+    console.log(response.data);
   }
+
   render(){
       return(
           <div>
               <h1>This is a test!</h1>
-              <DisplaySong />
+              <DisplaySong allSongs={this.state.songs}/>
           </div>
       )
   }
