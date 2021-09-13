@@ -18,11 +18,12 @@ class CreateSong extends Component {
         })
     }
 
-    hangleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.createNewSong(this.state)
     }
 
+    
     render() { 
         return ( 
             <form onSubmit={this.handleSubmit}>
@@ -33,7 +34,7 @@ class CreateSong extends Component {
                 <label>Album</label>
                 <input type='text' name="album" onChange={this.handleChange} value={this.state.album} />
                 <label>Release Date</label>
-                <input type='text' name="release_date" onChange={this.handleChange} value={this.state.release_date} />
+                <input type='date' name="release_date" onChange={this.handleChange} value={this.state.release_date} />
                 <label>Genre</label>
                 <input type='text' name="genre" onChange={this.handleChange} value={this.state.genre} />
                 <button type="submit">Create New Song</button>

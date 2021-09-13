@@ -23,6 +23,7 @@ function DisplaySong(props){
                             <td>{song.album}</td>
                             <td>{song.release_date}</td>
                             <td>{song.genre}</td>
+                            <td></td>
                         </tr>
                     )
                 })}
@@ -31,10 +32,5 @@ function DisplaySong(props){
     )
 }
 
-function AddNewSong(){
-    let response = await axios.post('http://127.0.0.1:8000/music/');
-    console.log(response.data)
-}
 
-export default AddNewSong;
 export default DisplaySong;
