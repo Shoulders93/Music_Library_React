@@ -5,7 +5,7 @@ function DisplaySong(props){
         <table>
             <thead>
                 <tr>
-                    <th>Song Title</th>
+                    <th>Song Name</th>
                     <th>Artist</th>
                     <th>Album</th>
                     <th>Release Date</th>
@@ -22,8 +22,8 @@ function DisplaySong(props){
                             <td>{song.album}</td>
                             <td>{song.release_date}</td>
                             <td>{song.genre}</td>
-                            <td><button type="submit" onClick = {this.DeleteSong(song.id)}>Delete</button></td>
-                        </tr>
+                            <td><button type="button" onClick={() => props.deleteSong(song.id)}>Delete</button></td>
+                      </tr>
                     )
                 })}
             </tbody>

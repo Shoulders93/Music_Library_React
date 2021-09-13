@@ -38,14 +38,15 @@ class App extends Component{
 
 
 
-    DeleteSong = async (deleteSong) =>{
+    deleteSong = async (song) => {
         try{
-            let response = await axios.delete('http://127.0.0.1:8000/music/', deleteSong);
+            let response = await axios.delete('http://127.0.0.1:8000/music/' + song);
             console.log('This is working')
         }
         catch(err){
             console.log("error in Delete Song")
         }
+        this.getAllSongs();
     }
 
 // sum < number ? console.log("Yes it is") : console.log('naw')
@@ -55,7 +56,7 @@ class App extends Component{
           <div>
               <h1>This is a test!</h1>
               {this.state.songs ? 
-              <DisplaySong allSongs={this.state.songs}/>
+              <DisplaySong allSongs={this.state.songs} deleteSong={this.deleteSong}/>
               :
               null}
               <CreateSong createNewSong = {this.AddNewSong}></CreateSong>
