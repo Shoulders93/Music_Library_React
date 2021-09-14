@@ -1,8 +1,9 @@
 import React from 'react';
+import './DisplaySong.css'
 
 function DisplaySong(props){
     return (
-        <table>
+        <table className='center'>
             <thead>
                 <tr>
                     <th>Song Name</th>
@@ -13,19 +14,19 @@ function DisplaySong(props){
                 </tr>
             </thead>
 
-            <tbody>
-                {props.allSongs.map((song) => {
-                    return(
-                        <tr key={song.id}> 
-                            <td>{song.title}</td>
-                            <td>{song.artist}</td>
-                            <td>{song.album}</td>
-                            <td>{song.release_date}</td>
-                            <td>{song.genre}</td>
-                            <td><button type="button" onClick={() => props.deleteSong(song.id)}>Delete</button></td>
-                      </tr>
-                    )
-                })}
+            <tbody className='word'>
+                    {props.allSongs.map((song) => {
+                        return(
+                            <tr className='rows' key={song.id}> 
+                                <td>{song.title}</td>
+                                <td>{song.artist}</td>
+                                <td>{song.album}</td>
+                                <td>{song.release_date}</td>
+                                <td>{song.genre}</td>
+                                <td><button type="button" onClick={() => props.deleteSong(song.id)}>Delete</button></td>
+                        </tr>
+                        )
+                    })}
             </tbody>
         </table>
     )

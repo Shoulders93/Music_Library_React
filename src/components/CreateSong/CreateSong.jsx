@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './CreateSong.css'
 
 class CreateSong extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class CreateSong extends Component {
     
     render() { 
         return ( 
-            <form onSubmit={this.handleSubmit}>
+            <form className='create'onSubmit={this.handleSubmit}>
                 <label>Song Title</label>
                 <input type='text' name="title" onChange={this.handleChange} value={this.state.title} />
                 <label>Artist</label>
