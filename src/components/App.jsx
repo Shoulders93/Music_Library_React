@@ -5,6 +5,7 @@ import DisplaySong from "./DisplaySong/DisplaySong";
 import SearchBar from "./SearchBar/SearchBar";
 import './App.css'
 import Footer from "../Footer/Footer";
+import Header from "./Header/Header";
 
 class App extends Component{
     constructor(props){
@@ -52,6 +53,17 @@ class App extends Component{
         this.getAllSongs();
     }
 
+    editSong = async (song) => {
+        try{
+            let response = await axios.put('http://127.0.0.1:8000/music/' + song);
+            console.log('This is working')
+        }
+        catch(err){
+            console.log("error in Edit Song")
+        }
+        this.getAllSongs();
+    }
+
     filterSong = async (searchTerm) => {
         let results = this.state.songs.filter(function(song){
             if(song.title == searchTerm || song.artist == searchTerm || song.album == searchTerm || song.release_date == searchTerm || song.genre == searchTerm)
@@ -69,7 +81,7 @@ class App extends Component{
       return(
           <div className='webpage'>
               <SearchBar filterSongs = {this.filterSong}></SearchBar>
-              <h1 className='title'>This is a test!</h1>
+              <Header />
               {this.state.songs ? 
               <DisplaySong allSongs={this.state.songs} deleteSong={this.deleteSong}/>
               :
