@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, {Component} from "react";
-import CreateSong from "./CreateSong";
-import DisplaySong from "./DisplaySong";
-import SearchBar from "./SearchBar";
+import CreateSong from "./CreateSong/CreateSong";
+import DisplaySong from "./DisplaySong/DisplaySong";
+import SearchBar from "./SearchBar/SearchBar";
 
 class App extends Component{
     constructor(props){
@@ -52,7 +52,7 @@ class App extends Component{
 
     filterSong = async (searchTerm) => {
         let results = this.state.songs.filter(function(song){
-            if(song.title == searchTerm || song.artist == searchTerm )
+            if(song.title == searchTerm || song.artist == searchTerm || song.album == searchTerm || song.release_date == searchTerm || song.genre == searchTerm)
             {
                 return true;
             }
