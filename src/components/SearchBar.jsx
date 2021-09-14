@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./SearchBar.css"
 
 class SearchBar extends Component {
     constructor(props) {
@@ -23,12 +24,13 @@ class SearchBar extends Component {
 
     render() { 
         return ( 
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                <label>Search Bar </label>
-                <input type='text' name="searchBar" onChange={this.handleChange} value={this.state.searchBar} placeholder= 'Search' />
-                <button type="submit">Search</button>
-                </form>
+            <div className ="container">
+                <div className="row">
+                    <form onSubmit={this.handleSubmit}>
+                    <input class='col-sm-offset-9 col-sm-3'type='text' name="searchBar" onChange={this.handleChange} value={this.state.searchBar} placeholder= 'Search' />
+                    <button class='searchButton'type="submit">Search</button>
+                    </form>
+                </div>
             </div>
          );
     }

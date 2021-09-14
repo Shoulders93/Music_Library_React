@@ -50,28 +50,29 @@ class App extends Component{
         this.getAllSongs();
     }
 
-    filterSong = async (song) => {
-        try{
-            let response = await axios.get('http://127.0.0.1:8000/music/' + song)
-            console.log("filter is working")
-        }
-        catch(err){
-            console.log("error in filter")
-        }
-        this.getAllSongs();
+    filterSong = async (searchTerm) => {
+        let results = this.state.songs.filter(function(song){
+            if(song.title == searchTerm || song.artist == searchTerm )
+            {
+                return true;
+            }
+        })
+        this.setState({
+            songs : results
+        })
     }
 
 
   render(){
       return(
           <div>
+              <SearchBar filterSongs = {this.filterSong}></SearchBar>
               <h1>This is a test!</h1>
               {this.state.songs ? 
               <DisplaySong allSongs={this.state.songs} deleteSong={this.deleteSong}/>
               :
               null}
               <CreateSong createNewSong = {this.AddNewSong}></CreateSong>
-              <SearchBar filterSongs = {this.filterSong}></SearchBar>
           </div>
       )
   }
